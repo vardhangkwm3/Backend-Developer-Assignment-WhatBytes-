@@ -1,0 +1,71 @@
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+{% endblock css %}
+
+{% block body %}
+
+{% include "includes/navbar.html" %}
+
+<div class="login">
+    <div class="container py-5">
+        <div class="row mt-4 mb-5">
+            <div class="col-md-6 m-auto">
+                <div class="card border-rounded shadow m-auto">
+                    <h2 class="m-auto pt-3">SignUp Here</h2>
+                    <hr>
+                    {% if msg is not None %}
+                        {% for item in msg  %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{item}}</strong>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form class="mx-4 my-2" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Username :</label>
+                            {{form.username}}
+                            <ul>
+                                <li>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</li>
+                            </ul>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address :</label>
+                            {{form.email}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password :</label>
+                            {{form.password1}}
+                            <ul>
+                                <li>Your Password can't be too similar to your other personal information.</li>
+                                <li>Your password must contain at least 8 characters.</li>
+                                <li>Your Password can't be a commonly used password.</li>
+                                <li>Your Password can't be entirely numeric.</li>
+                            </ul>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password Confirmation :</label>
+                            {{form.password2}}
+                            <ul>
+                                <li>Enter the same password as before, for verification.</li>
+                            </ul>
+                          </div>
+                        <button type="submit" class="btn btn-outline-success">SignUP</button>
+                    </form>
+                    <hr>
+                    <p class="ml-4">Already have an account<a href="{% url "login" %}"> Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+
+{% block scripts %}
+
+{% endblock scripts %}

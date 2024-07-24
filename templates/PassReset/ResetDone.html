@@ -1,0 +1,17 @@
+{% block css %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+{% endblock css %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+<div class="ml-3 my-4">
+    <h2>Password Reset Sent</h2>
+    <p>We've emailed you instructions for setting your password. If an account exists with this email you will receive the email shortly.</p>
+    <p>If You haven't received the email, please make sure you've entered the address you regestired with.</p>
+</div>
+
+{% endblock %}
