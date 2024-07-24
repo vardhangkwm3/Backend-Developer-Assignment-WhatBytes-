@@ -84,7 +84,11 @@ def Home(request):
 
 @login_required(login_url='login')
 def Profile(request):
-    user = WatchOver.objects.get(usr=request.user)
+    user = None
+    try:
+        user = WatchOver.objects.get(usr=request.user)
+    except:
+        user = None
     return render(request,"Profile.html",{'req':user})
 
 @login_required(login_url='login')
